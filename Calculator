@@ -1,0 +1,57 @@
+<link href="styles.css" rel="stylesheet" type="text/css">
+
+<h3>Calculator</h3>
+
+<div class ="container">
+    
+<form method ="post" action ="Calculations.php" class ="calform">
+
+    <?php
+    if(isset($_POST['submit'])){
+        
+        if(is_numeric($_POST['number1']) && is_numeric($_POST['number2'])){
+            
+            if($_POST['operation'] == 'add') {
+                
+                $total = $_POST['number1'] + $_POST['number2'];  
+            }
+            
+             if($_POST['operation'] == 'subtract') {
+                
+                $total = $_POST['number1'] - $_POST['number2']; 
+            }
+            
+             if($_POST['operation'] == 'multiply') {
+                
+                $total = $_POST['number1'] * $_POST['number2'];
+            }
+            
+             if($_POST['operation'] == 'divide') {
+                
+                $total = $_POST['number1'] / $_POST['number2'];  
+            } 
+            
+            echo "<h1 class ='answers'>{$_POST['number1']} {$_POST['operation']} {$_POST['number2']} equals {$total} </h1>";
+        }
+              else {
+                  echo"<h2 class ='errormessage'> Numeric values are required, please correcr your input";
+              }
+    }
+    ?>
+    
+<input name ="number1" type = "text" class="number1"/>
+    <br/>
+<select name = "operation" class ="operation">
+    <option value ="choose"> Select one</option>
+    <option value ="add" Class ="symbol"> + </option>
+    <option value ="subtract" Class ="symbol"> - </option>    
+    <option value ="multiply" Class ="symbol"> * </option> 
+    <option value ="divide" Class ="symbol"> / </option>
+</select>
+    <br/>
+<input name ="number2" type = "text" class ="number2"/>
+<input name ="submit" type = "submit" value ="Calculate"/>
+
+</form>
+</div>
+  
